@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:x_skill/pages/home_page.dart';
-import 'package:x_skill/pages/Photos_page.dart';
+import 'package:x_skill/pages/photos_page.dart';
 import 'package:x_skill/pages/skills_page.dart';
 import 'package:x_skill/pages/videos_page.dart';
 
@@ -14,11 +14,16 @@ class AppNavigation extends StatefulWidget {
 class _AppNavigationState extends State<AppNavigation> {
   int _selectedIndex = 0;
   List<Widget> get _screens => [
-    HomePage(),
+    HomePage(onNavigate: _navigateTo),
     PhotosPage(),
     SkillsPage(),
     VideosPage(),
   ];
+
+
+void _navigateTo(int index) {
+  setState(() => _selectedIndex = index);
+}
 
   @override
   Widget build(BuildContext context) {
@@ -83,8 +88,8 @@ class _AppNavigationState extends State<AppNavigation> {
               backgroundColor: Colors.white,
               items: const [
                 BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-                BottomNavigationBarItem(icon: Icon(Icons.build), label: 'Skills'),
                 BottomNavigationBarItem(icon: Icon(Icons.photo_library), label: 'Photos'),
+                BottomNavigationBarItem(icon: Icon(Icons.build), label: 'Skills'),
                 BottomNavigationBarItem(icon: Icon(Icons.video_camera_back), label: 'Videos'),
               ],
             )
