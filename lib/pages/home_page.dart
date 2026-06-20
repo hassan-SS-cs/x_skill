@@ -3,9 +3,9 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'dart:async';
 
 class HomePage extends StatefulWidget {
-final Function(int) onNavigate;
+  final Function(int) onNavigate;
 
-  const HomePage({super.key , required this.onNavigate});
+  const HomePage({super.key, required this.onNavigate});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -89,14 +89,65 @@ class _HomePageState extends State<HomePage> {
             alignment: Alignment(0, 0.60),
             child: SmoothPageIndicator(controller: _controller, count: 3),
           ),
-          SizedBox(height: 20,),
-          Row(
-            children: [
-              ElevatedButton(onPressed:() => widget.onNavigate(1) , child: Text('Photos')),
-                            ElevatedButton(onPressed:() => widget.onNavigate(2) , child: Text('Skills')),
-              ElevatedButton(onPressed:() => widget.onNavigate(3) , child: Text('Videos'))
-            ],
-          )
+          SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Align(
+                    alignment: AlignmentGeometry.centerLeft,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color.fromARGB(255, 63, 63, 63),
+                                  foregroundColor: Colors.white,
+                                  padding: EdgeInsets.all(18),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                ),
+                      onPressed: () => widget.onNavigate(1),
+                      child: Text('Photos'),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: AlignmentGeometry.center,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color.fromARGB(255, 63, 63, 63),
+                                  foregroundColor: Colors.white,
+                                  padding: EdgeInsets.all(18),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                ),
+                      onPressed: () => widget.onNavigate(2),
+                      child: Text('Skills'),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: AlignmentGeometry.centerRight,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color.fromARGB(255, 63, 63, 63),
+                                  foregroundColor: Colors.white,
+                                  padding: EdgeInsets.all(18),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                ),
+                      onPressed: () => widget.onNavigate(3),
+                      child: Text('Videos'),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

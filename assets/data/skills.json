@@ -1,0 +1,65 @@
+[
+  {
+    "id": "1",
+    "name": "Mobile Applications Development",
+    "description": "Competitors must design and develop mobile applications for both Android and iOS platforms. The task involves UI design, API integration, and performance optimization.",
+    "image": "assets/images/skill1.png",
+    "type": "Information & Communication Technology"
+  },
+  {
+    "id": "2",
+    "name": "Web Technologies",
+    "description": "Competitors build responsive and dynamic websites using modern frameworks. Tasks include front-end development, back-end logic, and database integration.",
+    "image": "assets/images/skill2.png",
+    "type": "Information & Communication Technology"
+  },
+  {
+    "id": "3",
+    "name": "Cybersecurity",
+    "description": "Competitors demonstrate skills in identifying vulnerabilities, securing systems, and responding to cyber threats in real-world scenarios.",
+    "image": "assets/images/skill3.png",
+    "type": "Information & Communication Technology"
+  },
+  {
+    "id": "4",
+    "name": "Cooking",
+    "description": "Competitors prepare a variety of dishes showcasing culinary techniques, creativity, and presentation skills within a set timeframe.",
+    "image": "assets/images/skill4.png",
+    "type": "Restaurant & Catering"
+  },
+  {
+    "id": "5",
+    "name": "Restaurant Service",
+    "description": "Competitors demonstrate professional table service, wine knowledge, and customer interaction skills in a simulated restaurant environment.",
+    "image": "assets/images/skill5.png",
+    "type": "Restaurant & Catering"
+  },
+  {
+    "id": "6",
+    "name": "Patisserie & Confectionery",
+    "description": "Competitors create artistic pastries, cakes, and confections that combine technical precision with artistic flair and great taste.",
+    "image": "assets/images/skill6.png",
+    "type": "Restaurant & Catering"
+  },
+  {
+    "id": "7",
+    "name": "Carpentry",
+    "description": "Competitors construct wooden structures and furniture pieces using hand and power tools, demonstrating accuracy and craftsmanship.",
+    "image": "assets/images/skill7.png",
+    "type": "Construction & Building Technology"
+  },
+  {
+    "id": "8",
+    "name": "Bricklaying",
+    "description": "Competitors lay bricks and blocks to construct walls and structures, demonstrating precision, speed, and knowledge of building techniques.",
+    "image": "assets/images/skill8.png",
+    "type": "Construction & Building Technology"
+  },
+  {
+    "id": "9",
+    "name": "Plumbing & Heating",
+    "description": "Competitors install and maintain plumbing systems including pipes, fixtures, and heating equipment according to professional standards.",
+    "image": "assets/images/skill9.png",
+    "type": "Construction & Building Technology"
+  }
+]
