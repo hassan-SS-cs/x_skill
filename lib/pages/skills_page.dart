@@ -13,7 +13,7 @@ class SkillsPage extends StatefulWidget {
 class _SkillsPageState extends State<SkillsPage> {
   List<SkillModel> _skills = [];
   Map<String, List<SkillModel>> _grouped = {};
-
+  // loads skills from JSON and groups them by type
   Future<void> _loadData() async {
     final jsonStr = await rootBundle.loadString('assets/data/skills.json');
     final List data = json.decode(jsonStr);
@@ -41,16 +41,24 @@ class _SkillsPageState extends State<SkillsPage> {
         children: _grouped.entries
             .expand(
               (entry) => [
+                // skill type title header
                 Container(
                   color: const Color.fromARGB(255, 91, 91, 91),
                   padding: EdgeInsets.all(8),
-                  child: Text(entry.key,style: TextStyle(color: Colors.white),),
+                  child: Text(
+                    entry.key,
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
+                // skills list under each type
                 ...entry.value.map(
                   (skill) => ListTile(
+                    title: Text(skill.name),
                     onTap: () {
                       final skillsInType = _grouped[skill.type]!;
+                      // tracks which skill is shown inside the dialog
                       int currentIndex = skillsInType.indexOf(skill);
+                      // dialog with StatefulBuilder so Next button can update currentIndex
                       showDialog(
                         context: context,
                         builder: (context) => StatefulBuilder(
@@ -59,16 +67,18 @@ class _SkillsPageState extends State<SkillsPage> {
                               padding: const EdgeInsets.all(12.0),
                               child: Column(
                                 children: [
-                                  SizedBox(height: 20,),
-                                Image.asset(skillsInType[currentIndex].image),
-                                SizedBox(height: 20,),
+                                  SizedBox(height: 20),
+                                  Image.asset(skillsInType[currentIndex].image),
+                                  SizedBox(height: 20),
                                   Text(skillsInType[currentIndex].name),
-                                  SizedBox(height: 30,),
+                                  SizedBox(height: 30),
+                                  // selectable so user can long press to copy
                                   SelectableText(
                                     skillsInType[currentIndex].description,
                                   ),
-                                  if (currentIndex < skillsInType.length - 1)...[
-                                  SizedBox(height: 30,),
+                                  // Next button hidden when on last skill in type
+                                  if (currentIndex < skillsInType.length - 1) ...[
+                                    SizedBox(height: 30),
                                     ElevatedButton(
                                       onPressed: () {
                                         setStateDialog(() => currentIndex++);
@@ -83,7 +93,6 @@ class _SkillsPageState extends State<SkillsPage> {
                         ),
                       );
                     },
-                    title: Text(skill.name),
                   ),
                 ),
               ],

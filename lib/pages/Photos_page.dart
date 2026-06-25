@@ -3,7 +3,7 @@ import 'package:x_skill/models/photos_model.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:share_plus/share_plus.dart';
-import 'package:photo_view/photo_view.dart'; // ← جديد
+import 'package:photo_view/photo_view.dart';
 
 class PhotosPage extends StatefulWidget {
   const PhotosPage({super.key});
@@ -23,15 +23,18 @@ class _PhotosPageState extends State<PhotosPage> {
     _loadData();
   }
 
+  // returns only photos that belong to the current page
   List<PhotosModel> get _currentPhotos {
     return _allPhotos.where((photo) => photo.page == _currentPage).toList();
   }
 
+  // finds the highest page number from all photos
   int get _totalPages {
     if (_allPhotos.isEmpty) return 1;
     return _allPhotos.map((p) => p.page).reduce((a, b) => a > b ? a : b);
   }
 
+  // loads photos from local JSON file and stores them in _allPhotos
   Future<void> _loadData() async {
     final jsontStr = await rootBundle.loadString('assets/data/photos.json');
     final List data = json.decode(jsontStr);
@@ -45,9 +48,11 @@ class _PhotosPageState extends State<PhotosPage> {
     return Scaffold(
       body: Column(
         children: [
+          // Photos grid
+          SizedBox(height: 100,),
           Expanded(
             child: GridView.builder(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.fromLTRB(8, 20, 8, 0),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 8,
@@ -57,7 +62,9 @@ class _PhotosPageState extends State<PhotosPage> {
               itemBuilder: (context, index) {
                 final photo = _currentPhotos[index];
                 return GestureDetector(
+                  // saves tap position to use it for the context menu location
                   onTapDown: (details) => _tapDetails = details,
+                  // opens photo in fullscreen with zoom support
                   onTap: () {
                     Navigator.push(
                       context,
@@ -75,6 +82,7 @@ class _PhotosPageState extends State<PhotosPage> {
                       ),
                     );
                   },
+                  // shows context menu at tap position with share option
                   onLongPress: () {
                     final position = RelativeRect.fromLTRB(
                       _tapDetails!.globalPosition.dx,
@@ -113,6 +121,7 @@ class _PhotosPageState extends State<PhotosPage> {
                             },
                           ),
                         ),
+                        // popularity and visit overlay at bottom of photo
                         Positioned(
                           bottom: 0,
                           left: 0,
@@ -148,6 +157,7 @@ class _PhotosPageState extends State<PhotosPage> {
               },
             ),
           ),
+          // Pagination bar
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -156,6 +166,7 @@ class _PhotosPageState extends State<PhotosPage> {
                 final page = index + 1;
                 final isSelected = page == _currentPage;
                 return GestureDetector(
+                  // changes current page on tap and rebuilds the grid
                   onTap: () => setState(() => _currentPage = page),
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: 4),
