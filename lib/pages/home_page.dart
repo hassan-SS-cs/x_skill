@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    // 4. Always cancel the timer and dispose the controller to avoid leaks
+    // Always cancel the timer and dispose the controller to avoid leaks
     _timer?.cancel();
     _controller.dispose();
     super.dispose();

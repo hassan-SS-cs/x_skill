@@ -37,14 +37,12 @@ class _VideosPageState extends State<VideosPage> {
     await _loadData();
     await _initController();
   }
-
   // format Duration 
   String _formatDuration(Duration d) {
     final minutes = d.inMinutes;
     final seconds = d.inSeconds % 60;
     return '$minutes:${seconds.toString().padLeft(2, '0')}';
   }
-
   Future<void> _loadData() async {
     final jsontStr = await rootBundle.loadString('assets/data/videos.json');
     final List data = json.decode(jsontStr);
@@ -53,7 +51,6 @@ class _VideosPageState extends State<VideosPage> {
       _currentVideo = _videos.first;
       _comments = _currentVideo!.comments;
     });
-
     for (final video in _videos) {
       final temp = VideoPlayerController.asset(video.url);
       await temp.initialize();
@@ -62,7 +59,6 @@ class _VideosPageState extends State<VideosPage> {
     }
     setState(() {});
   }
-
   // adds a listener so the timer updates every frame
   Future<void> _initController() async {
     _controller?.dispose();
@@ -73,7 +69,6 @@ class _VideosPageState extends State<VideosPage> {
     });
     setState(() {});
   }
-
   // disposes old controller switches to new video
   Future<void> _changeVideo(VideoModel video) async {
     _controller?.dispose();
@@ -98,9 +93,7 @@ class _VideosPageState extends State<VideosPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 70),
-
               Text(_currentVideo!.title),
-
               // Video player by double click or long press
               GestureDetector(
                 onDoubleTap: () {
@@ -117,7 +110,6 @@ class _VideosPageState extends State<VideosPage> {
                   child: VideoPlayer(_controller!),
                 ),
               ),
-
               // Controls part here like play, pause, timer, mute
               Row(
                 children: [
@@ -155,9 +147,7 @@ class _VideosPageState extends State<VideosPage> {
                   ),
                 ],
               ),
-              
               SizedBox(height: 16),
-
               // more videos
               Text(
                 'More videos...',
@@ -191,9 +181,7 @@ class _VideosPageState extends State<VideosPage> {
                       ),
                     ),
                   ).toList()),
-
               SizedBox(height: 16),
-
               // comment part here
               Row(
                 children: [
