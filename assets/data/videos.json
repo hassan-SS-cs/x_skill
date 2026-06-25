@@ -1,0 +1,28 @@
+[
+  {
+    "id": "1",
+    "title": "WorldSkills Opening Ceremony",
+    "url": "assets/videos/video1.mp4",
+    "duration": "0:30",
+    "comments": [
+      {"ip": "192.168.1.1", "content": "Amazing ceremony!"},
+      {"ip": "192.168.1.2", "content": "Very inspiring!"}
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Skills Competition Highlights",
+    "url": "assets/videos/video2.mp4",
+    "duration": "0:45",
+    "comments": [
+      {"ip": "192.168.1.3", "content": "Great skills!"}
+    ]
+  },
+  {
+    "id": "3",
+    "title": "WorldSkills Closing Ceremony",
+    "url": "assets/videos/video3.mp4",
+    "duration": "1:00",
+    "comments": []
+  }
+]
